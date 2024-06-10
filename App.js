@@ -1,20 +1,26 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import TicTacToeBoard from './src/components/board/TicTacToeBoard';
 
 export default function App() {
+  const boardValues = [
+    ['X', 'O', 'O'],
+    ['O', 'X', 'O'],
+    ['X', 'O', 'X']
+  ];
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={styles.view}>
+      {/* Render the TicTacToeBoard, passing the boardValues */}
+      <TicTacToeBoard boardValues={boardValues} />
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+  view: {
     justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
   },
 });
