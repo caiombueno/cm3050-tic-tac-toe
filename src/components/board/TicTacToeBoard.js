@@ -70,13 +70,10 @@ const Row = (props) => (<View style={styles.row}>{props.children}</View>)
 
 const styles = StyleSheet.create({
     container: {
-        marginLeft: '5%',
-        marginRight: '5%',
+        margin: '5%',
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column',
-        flex: 1,
-        backgroundColor: '#fff',
     },
     row: { flexDirection: 'row' },
 });
