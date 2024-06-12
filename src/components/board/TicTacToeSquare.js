@@ -1,24 +1,21 @@
-import { StyleSheet, Text, View, PixelRatio } from 'react-native';
+import { StyleSheet, Text, View, PixelRatio, Image } from 'react-native';
 
 
 /// Represents a square in a TicTacToe board
 export default function TicTacToeSquare(props) {
-    const rowIndex = props.rowIndex;
-    const colIndex = props.colIndex;
-    const rowLength = props.rowLength;
-    const colLength = props.colLength;
     const value = props.children;
+    const style = props.style;
 
-    const getBorderStyle = (row, col) => {
-        const style = {};
-        if (row < rowLength - 1) style.borderBottomWidth = 1;
-        if (col < colLength - 1) style.borderRightWidth = 1;
-        return style;
-    };
+    let image;
+    if (value === 'X') {
+        image = require('../../assets/images/x.png');
+    } else if (value === 'O') {
+        image = require('../../assets/images/o.png');
+    }
 
     return (
-        <View style={[styles.square, getBorderStyle(rowIndex, colIndex)]}>
-            <SquareText>{value}</SquareText>
+        <View style={[styles.square, style]}>
+            {(image) ? <Image style={styles.image} source={image} /> : <SquareText>{value}</SquareText>}
         </View>
     );
 };
@@ -31,7 +28,12 @@ const styles = StyleSheet.create({
         aspectRatio: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        borderColor: 'black',
+        backgroundColor: 'white',
+        margin: '1%',
     },
-    squareText: { fontSize: '50vw', },
+    squareText: { fontSize: 50, },
+    image: {
+        width: '100%',
+        height: '100%',
+    }
 });
